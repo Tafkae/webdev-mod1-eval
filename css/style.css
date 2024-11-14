@@ -69,7 +69,7 @@ hr {
   grid-column: 1 / 3;
 }
 
-@media (min-width: 800px) {
+@media (min-width: var(--break-width)) {
   .container > article {
     grid-column: 1 / 2;
   }
@@ -110,7 +110,7 @@ figure {
   text-transform: uppercase;
 }
 
-@media (min-width: 800px) {
+@media (min-width: var(--break-width)) {
   .header_pub-info {
     flex-direction: row;
     justify-content: space-between;
