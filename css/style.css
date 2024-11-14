@@ -1,5 +1,9 @@
 @import url("reset.css");
 
+:root {
+  --break-width: 800px;
+}
+
 html {
   padding: 0;
   margin: 0;
@@ -49,36 +53,52 @@ hr {
   border-color: #555555;
 }
 
-header,
-main,
-footer {
-  margin: 1.6rem 0 1.6rem;
-}
-
 .container {
   padding: 0;
   margin: 0 auto;
   width: 100%;
   max-width: 1000px;
+
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  justify-content: stretch;
+  align-items: stretch;
 }
+
+.container > * {
+  grid-column: 1 / 3;
+}
+
+@media (min-width: 800px) {
+  .container > article {
+    grid-column: 1 / 2;
+  }
+  .container > .sidebar {
+    grid-column: 2 / 3;
+  }
+}
+
+
+/* HEADER ===========================================*/
 
 header {
   background-color: #64bcda;
   border-bottom: 8px solid #000000;
-  margin: 0 0 3.2rem 1.6rem;
+  margin: 0;
+  padding: 0 1.6rem;
+}
+
+figure {
+  display: block;
+  margin-block: 0;
+  margin-inline: 0;
 }
 
 .header_logo {
-  padding: 1.6rem;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.header_logo img {
+  padding: 1.6rem 0;
   width: 100%;
   max-width: 420px;
+  margin: auto;
 }
 
 .header_pub-info {
@@ -90,33 +110,66 @@ header {
   text-transform: uppercase;
 }
 
-.main-article {
+@media (min-width: 800px) {
+  .header_pub-info {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* CONTENT ===================================== */
+
+main{
+  margin: 0;
+}
+
+article {
   background-color: #e2e2e2;
   padding: 1.6rem;
   width: 100%;
   margin: 0 0 1.6rem;
 }
 
-.main-article_cover {
+figure.article_cover {
   margin: 0 0 1.6rem;
 }
 
-.main-article_cover .caption {
+figure.article_cover figcaption {
+  display: inline;
   color: #666666;
   font-size: 0.8rem;
   font-style: italic;
   line-height: 1;
 }
 
-.main-article_content h1 {
+.content hgroup h1 {
   font-size: 2rem;
 }
 
-.main-article_byline {
+.content hgroup p {
   margin: 0 0 1.6rem;
 }
 
-.main-sidebar {
+.author-label {
+  font-style: italic;
+}
+
+article q {
+  font-style: italic;
+}
+
+@media (min-width: 800px) {
+  article {
+    width: 60%;
+    border-radius: 0.6rem;
+    margin: 0;
+  }
+}
+
+/* SIDEBAR ============================================ */
+
+.sidebar {
   width: 100%;
   padding: 1.6rem;
   background-color: #323232;
@@ -125,22 +178,22 @@ header {
   font-size: 0.9rem;
 }
 
-.main-sidebar_thumb {
+.sidebar_thumb {
   margin: 0 0 0.8rem;
 }
 
-.main-sidebar_thumb .caption {
+.sidebar_thumb .caption {
   color: #f2f2f2;
   font-size: 0.8rem;
   font-style: italic;
   line-height: 1;
 }
 
-.main-sidebar li {
+.sidebar li {
   margin: 0 0 1.6rem;
 }
 
-.main-sidebar_byline {
+.sidebar_byline {
   margin: 0 0 1.6rem;
   display: flex;
   flex-direction: row;
@@ -149,32 +202,23 @@ header {
   align-items: center;
 }
 
-.main-sidebar_byline .byline_date {
+.sidebar_byline .byline_date {
   display: none;
 }
 
-.main-sidebar_byline .byline_name {
+.sidebar_byline .byline_name {
   display: block;
 }
 
-.footer {
+/* FOOTER ============================================= */
+
+footer {
   text-align: center;
+  margin: 1.6rem 0 1.6rem;
 }
 
 @media (min-width: 800px) {
-  .header_pub-info {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .main-article {
-    width: 60%;
-    border-radius: 0.6rem;
-    margin: 0;
-  }
-
-  .main-sidebar {
+  .sidebar {
     width: 40%;
     border-radius: 0.6rem;
     margin: 0;
